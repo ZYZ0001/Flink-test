@@ -19,11 +19,12 @@ object DBConnectUtil {
     try {
       Class.forName("com.mysql.jdbc.Driver")
       conn = DriverManager.getConnection(url, user, password)
+      conn.setReadOnly(false)
+      // 设置手动提交
+      conn.setAutoCommit(false)
     } catch {
       case e: Exception => e.printStackTrace()
     }
-    // 设置手动提交
-    conn.setAutoCommit(false)
     conn
   }
 

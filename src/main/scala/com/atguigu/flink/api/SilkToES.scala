@@ -26,7 +26,7 @@ object SilkToES {
         hosts.add(new HttpHost("hadoop102", 9200))
 
         val esBuilder = new ElasticsearchSink.Builder[Student](hosts, new ElasticsearchSinkFunction[Student] {
-            override def process(t: Student, runtimeContext: RuntimeContext, requestIndexer: RequestIndexer): Unit = {
+                override def process(t: Student, runtimeContext: RuntimeContext, requestIndexer: RequestIndexer): Unit = {
                 val map = new java.util.HashMap[String, Any]()
                 map.put("id", t.id)
                 map.put("name", t.name)
