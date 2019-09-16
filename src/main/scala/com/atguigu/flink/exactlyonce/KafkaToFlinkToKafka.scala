@@ -17,9 +17,9 @@ object KafkaToFlinkToKafka1 {
     // 获取执行环境并设置
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
     // 设置并行的为1, 方便查看消息顺序, 可以改为多并行度
-    //    env.setParallelism(1)
+    env.setParallelism(1)
     // 启动检查点, 并设置5s启动一个
-    //    env.enableCheckpointing(5000)
+    env.enableCheckpointing(5000)
     // 设置检查点的exactly_once语义, 上面再启动检查点时会自动设置
     env.getCheckpointConfig.setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE)
     // 设置检查点间最小的时间间隔
